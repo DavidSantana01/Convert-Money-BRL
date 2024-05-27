@@ -2,7 +2,7 @@
 <br>
 <p>Projeto de um conversor de moedas</p>
 <div>
-    <img src="." alt="Foto-ConvertMorney-website">
+    <img src="./assets/ConvertMoneyWebsite.png" alt="Foto-ConvertMorney-website">
 </div>
 <br>
 <h2>Tecnologias usadas</h2>
