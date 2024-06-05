@@ -1,16 +1,21 @@
 const convertButton = document.querySelector('.convert-button')
 const currencySelect = document.querySelector('.currency-select')
 
-function convertValues(){
+
+
+const convertValues = async () => { // Async Await
     const inputCurrencyValue = document.querySelector('.input-currency').value
     const currencyValueToConvert = document.querySelector('.currency-value-to-convert')
     const currencyValueConverted = document.querySelector('.currency-value')
 
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then( response => response.json())
 
-    const dolarToday = 4.9
-    const euroToday = 5.3
-    const libraToday = 6.2
-    const bitcoinToday = 210.387
+    const dolar = data.USDBRL.high
+    const euro = data.EURBRL.high
+    const libra = 6.76
+    const bitcoin = data.BTCBRL.high
+
+    //console.log(data)
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
@@ -21,28 +26,28 @@ function convertValues(){
         currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
-    }).format(inputCurrencyValue / dolarToday) 
+    }).format(inputCurrencyValue / dolar) 
     }
 
     if(currencySelect.value == 'euro'){
         currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'EUR'
-    }).format(inputCurrencyValue / euroToday) 
+    }).format(inputCurrencyValue / euro) 
     }
 
     if(currencySelect.value == 'libra'){
         currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'GBP'
-    }).format(inputCurrencyValue / libraToday) 
+    }).format(inputCurrencyValue / libra) 
     }
 
     if(currencySelect.value == 'bitcoin'){
         currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
         style: 'currency',
         currency: 'BTC'
-    }).format(inputCurrencyValue / bitcoinToday) 
+    }).format(inputCurrencyValue / bitcoin) 
     }
 }
 
